@@ -47,6 +47,7 @@ body{
     width: fit-content;
     margin: auto;
     padding: .25rem .5rem;
+    margin-bottom: 1rem;
     cursor: pointer;
 }
 .location select{
@@ -56,13 +57,7 @@ body{
     background-color: transparent;
     cursor: pointer;
 }
-.location select option{
-    appearance: none;
-    padding: 1rem;
-    background-color: transparent;
-}
 .landing .landing-content{
-    padding-top: 1rem;
     height: 50%;
 }
 .landing .landing-content .next-athan-time{
@@ -104,6 +99,10 @@ body{
         background-size: contain;
         background-position: bottom right;
     }
+    .landing .location{
+        margin-bottom: 2.5rem;
+    }
+    
     /* cards display */
     .cards-container{
         grid-template-columns: repeat(1, 1fr);
