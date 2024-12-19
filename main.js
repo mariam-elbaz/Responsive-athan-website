@@ -11,7 +11,7 @@ let cities = ['Mansoura', 'Suhaj', "Bur Sa'id", 'Qina', 'Aswan', 'Alexandria', '
         });
 
 function getAthanByCity(city){
-        fetch(`http://api.aladhan.com/v1/timingsByCity?country=EG&city=${city}`)
+        fetch(`https://api.aladhan.com/v1/timingsByCity?country=EG&city=${city}`)
 .then((athanData) =>(athanData.json()))
 .then((athanData)=>{
 console.log(athanData);
