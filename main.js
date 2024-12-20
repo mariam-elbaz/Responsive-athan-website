@@ -21,7 +21,8 @@ console.log(athanData);
         console.log(allAthanArr);
 
         // find the next athan 
-        let [nextAthan, nextTime] = allAthanArr.find(([athan, time]) => convertTimeToMin(time) > getTimeNow());
+        let [nextAthan, nextTime] = allAthanArr.filter(([athan, time]) => convertTimeToMin(time) > getTimeNow()).slice(-1)[0] || allAthanArr[0];
+
         console.log(nextAthan, nextTime);
 
         // find the previous athan 
@@ -53,7 +54,10 @@ console.log(athanData);
                 }
                 else if(prevtAthan === "Isha"){
                         setColors("1a1a70e6", "00000099");
-                }     
+                }    
+                // else if(prevtAthan === "Isha"){
+                //         setColors("1a1a70e6", "00000099");
+                // }     
         }
                 
 
