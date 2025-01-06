@@ -21,37 +21,49 @@ let cities = ['Mansoura', 'Suhaj', "Bur Sa'id", 'Qina', 'Aswan', 'Alexandria', '
         console.log(allAthanArr);
 
         // find the next athan 
-        let [nextAthan, nextTime] = allAthanArr.filter(([athan, time]) => convertTimeToMin(time) > getTimeInMIn()).slice(-1)[0] || allAthanArr[0];
-        console.log(nextAthan, nextTime);
+        let nextAthan = allAthanArr.find(([athan, time]) => convertTimeToMin(time) > getTimeInMIn());
+        if (!nextAthan) {
+                nextAthan = allAthanArr[0]; 
+        }
+        console.log(nextAthan[0], nextAthan[1]);
+        // let [nextAthan, nextTime] = allAthanArr.filter(([athan, time]) => convertTimeToMin(time) > getTimeInMIn()).slice(-1)[0] || allAthanArr[0];
+        // console.log(nextAthan, nextTime);
+
+        
 
         // find the previous athan 
-        let [prevtAthan, prevTime] = allAthanArr.filter(([athan, time]) => convertTimeToMin(time) < getTimeInMIn()).slice(-1)[0] || allAthanArr[0];
-        console.log(prevtAthan, prevTime);
+        let prevAthan = allAthanArr.find(([athan, time]) => convertTimeToMin(time) < getTimeInMIn());
+        if (!prevAthan) { 
+                prevAthan = allAthanArr[allAthanArr.length - 1];
+        }
+        console.log(prevAthan[0], prevAthan[1]);
+        // let [prevtAthan, prevTime] = allAthanArr.filter(([athan, time]) => convertTimeToMin(time) < getTimeInMIn()).slice(-1)[0] || allAthanArr[allAthanArr.length - 1];
+        // console.log(prevtAthan, prevTime);
 
 
         // [1] set the next athan
-        document.querySelector('.next-athan-title').innerHTML  = nextAthan;
-        document.querySelector('.next-athan-time').innerHTML = nextTime;
+        document.querySelector('.next-athan-title').innerHTML  = nextAthan[0];
+        document.querySelector('.next-athan-time').innerHTML = nextAthan[1];
 
 
         // [2] change bg
-        if(prevTime){
-                if(prevtAthan === "Fajr"){
+        if(prevAthan[1]){
+                if(prevAthan[0] === "Fajr"){
                         setColors("4b6bb7dc", "C9D6FF");
                 }
-                else if(prevtAthan === "Sunrise"){
+                else if(prevAthan[0] === "Sunrise"){
                         setColors("FFA07A", "ffd9004d");
                 }
-                else if(prevtAthan === "Dhuhr"){
+                else if(prevAthan[0] === "Dhuhr"){
                         setColors("ffdb10d1", "87CEFA");
                 }
-                else if(prevtAthan === "Asr"){
+                else if(prevAthan[0] === "Asr"){
                         setColors("ff6347a6", "f4a30099");
                 }
-                else if(prevtAthan === "Maghrib"){
+                else if(prevAthan[0] === "Maghrib"){
                         setColors("ff6347ab", "8000809e");
                 }
-                else if(prevtAthan === "Isha"){
+                else if(prevAthan[0] === "Isha"){
                         setColors("1a1a70e6", "00000099");
                 }    
                 // else if(prevtAthan === "Isha"){
