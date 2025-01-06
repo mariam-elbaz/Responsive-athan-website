@@ -10,23 +10,23 @@ let cities = ['Mansoura', 'Suhaj', "Bur Sa'id", 'Qina', 'Aswan', 'Alexandria', '
                 getAthanByCity(this.value);
         });
 
-function getAthanByCity(city){
+        function getAthanByCity(city){
         fetch(`https://api.aladhan.com/v1/timingsByCity?country=EG&city=${city}`)
-.then((athanData) =>(athanData.json()))
-.then((athanData)=>{
-console.log(athanData);
+        .then((athanData) =>(athanData.json()))
+        .then((athanData)=>{
+        console.log(athanData);
 
         //arr of all athan arrays    
         let  allAthanArr = Object.entries(athanData.data.timings).filter(([athan, time]) =>athan =='Fajr' || athan =='Sunrise' || athan =='Dhuhr'|| athan =='Asr' || athan =='Maghrib' || athan =='Isha')
         console.log(allAthanArr);
 
         // find the next athan 
-        let [nextAthan, nextTime] = allAthanArr.filter(([athan, time]) => convertTimeToMin(time) > getTimeNow()).slice(-1)[0] || allAthanArr[0];
+        let [nextAthan, nextTime] = allAthanArr.filter(([athan, time]) => convertTimeToMin(time) > getTimeInMIn()).slice(-1)[0] || allAthanArr[0];
 
         console.log(nextAthan, nextTime);
 
         // find the previous athan 
-        let [prevtAthan, prevTime] = allAthanArr.filter(([athan, time]) => convertTimeToMin(time) < getTimeNow()).slice(-1)[0];
+        let [prevtAthan, prevTime] = allAthanArr.filter(([athan, time]) => convertTimeToMin(time) < getTimeInMIn()).slice(-1)[0] || allAthanArr[0];
         console.log(prevtAthan, prevTime);
 
 
@@ -90,7 +90,7 @@ getAthanByCity('Mansoura');
 
 
 // ---------------------------funs
-function getTimeNow(){
+function getTimeInMIn(){
         const currentDate = new Date();
         let currentHour = currentDate.getHours();
         let currentMinute = currentDate.getMinutes();
