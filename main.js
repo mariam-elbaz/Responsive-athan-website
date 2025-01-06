@@ -22,7 +22,6 @@ let cities = ['Mansoura', 'Suhaj', "Bur Sa'id", 'Qina', 'Aswan', 'Alexandria', '
 
         // find the next athan 
         let [nextAthan, nextTime] = allAthanArr.filter(([athan, time]) => convertTimeToMin(time) > getTimeInMIn()).slice(-1)[0] || allAthanArr[0];
-
         console.log(nextAthan, nextTime);
 
         // find the previous athan 
